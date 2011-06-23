@@ -1,0 +1,12 @@
+vim配置文件和插件
+
+1. .vim是linux/unix/mac的文件类型，如果是windows的话，要把
+   .vimrc 改名为 _vimrc
+   .vim里的文件夹复制到vimfile里
+
+2. 修改.vimrc 里的字体配置
+   换到windows可能会有错误，需要删掉出错的地方，或者根据错误修改
+
+
+
+
