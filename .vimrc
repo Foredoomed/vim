@@ -5,7 +5,7 @@ color fu
 "打开语法高亮
 syntax on
 "字体
-set guifont=monaco\ 12   "monaco:h14:b:cANSI
+set guifont=monaco\ 12
 "整词换行
 set linebreak
 "左右光标移动到头时可以自动下移
@@ -93,6 +93,7 @@ endfunction
 :inoremap ] <c-r>=ClosePair(']')<CR>
 :inoremap < <><ESC>i
 :inoremap > <c-r>=ClosePair('>')<CR>
+
 
 function ClosePair(char)
 if getline('.')[col('.') - 1] == a:char
@@ -212,7 +213,7 @@ let g:vimwiki_list = [{
 \}]
 
 
-" TagList setting
+" TagList
 "Exuberant ctags程序的位置
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 let Tlist_Inc_Winwidth=0
@@ -225,7 +226,7 @@ let Tlist_Exit_OnlyWindow = 1
 
 
 
-" BufExplore setting
+" BufExplore
 let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
@@ -235,7 +236,7 @@ let g:bufExplorerSplitVertSize = 30  " Split width
 let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 
 
-" winManager setting
+" winManager
 "let g:winManagerWindowLayout = \""BufExplorer,FileExplorer|TagList"
 let g:winManagerWindowLayout = "FileExplorer"
 let g:winManagerWidth = 30
