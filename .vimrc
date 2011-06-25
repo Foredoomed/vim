@@ -22,8 +22,6 @@ set history=50
 set number
 "使用:e命令的时候 可选项预览
 set wildmenu
-"文件默认编码utf-8
-set enc=utf-8
 "文件默认格式unix
 set ff=unix
 "缩进为4个空格宽度
@@ -45,44 +43,42 @@ set ignorecase
 set smartcase
 "显示标签栏 0: 从不 1: 大于1个时显示 2: 总是
 set showtabline=2
-"关闭buffer后隐藏
-set hidden
 "通过使用: commands命令，告诉我们文件的哪一行被改变过 
 set report=0
-"不让vim发出讨厌的滴滴声
+"关闭错误信息响铃
+"自动切换当前目录为当前文件所在的目录
+set autochdir           
 set noerrorbells
 "显示模式
 set showmode
+"显示括号配对情况
+set magic      
+"允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存         
+set hidden             
 "注释
 set comments=sl:/*,mb:*,ex:*/
+"设定命令行的行数为1
+set cmdheight=1             
 "自动补全提示
 set wildmode=list:longest,full
 "使用中文帮助
 set helplang=cn
-
+"不要备份文件
+set nobackup
 "设置编码  
 set enc=utf-8  
 "设置文件编码  
 set fenc=utf-8  
 "设置文件编码检测类型及支持格式  
 set fencs=utf-8,gb18030,gbk,gb2312  
-
-
+"显示Tab符
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
+set list
 "显示状态行 
 set laststatus=2
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
-function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
-    return curdir
-endfunction
+set statusline=\ File:\ [%F%m%r]%h\ \ \ CWD:%r[%{getcwd()}]%h\ \ \ [%{(&fenc==\"\")?&enc:&fenc}][%{&ff}][ASCII=\%03.3b/Hex=\%02.2B]\ %w\ \ \ Line:[%l/%L:%c]\ [%p%%]
 
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    else
-        return ''
-    endif
-endfunction
+
 
 "自动补全括号
 :inoremap ( ()<ESC>i
@@ -104,10 +100,10 @@ endif
 endf
 
 
-
-
 "设置字典
 autocmd FileType javascript set dictionary=~/.vim/dict/javascript.dict
+
+
 
 "重新载入配置
 map <leader>s :source ~/.vimrc<CR>
@@ -186,7 +182,8 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType css set foldmethod=marker
 autocmd FileType python setlocal et sta sw=4 sts=4
 
-
+" let AutoCloseTag works for xml and xhtml files as well
+au FileType xhtml,xml ru ftplugin/html_autoclosetag.vim
 
 " javascriptlint
 "autocmd FileType javascript set makeprg=/home/xp/bin/js/jsl\ -nologo\ -nofilelisting\ -nosummary\ -nocontext\ -conf\ '/home/xp/bin/js/jsl.conf'\ -process\ %
