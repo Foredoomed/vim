@@ -201,6 +201,18 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
+" NERD_commenter.vim
+<leader>ca 在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
+<leader>cc 注释当前行
+<leader>cs 以”性感”的方式注释
+<leader>cA 在当前行尾添加注释符，并进入Insert模式
+<leader>cu 取消注释
+<leader>cm 添加块注释
+
+" jsbeautify.vim 优化js代码，并不是简单的缩进，而是优化整个文件
+nmap <silent> <leader>js :call g:Jsbeautify()<cr>
+
+
 " vimwiki
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_list = [{
