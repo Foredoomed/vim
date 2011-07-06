@@ -5,7 +5,7 @@ color fu
 "打开语法高亮
 syntax on
 "字体
-set guifont=monaco\ 12
+set guifont=monaco\ 12  "set guifont=monaco:h14:b:cANSI
 "整词换行
 set linebreak
 "左右光标移动到头时可以自动下移
@@ -22,6 +22,8 @@ set history=50
 set number
 "使用:e命令的时候 可选项预览
 set wildmenu
+"文件默认编码utf-8
+set enc=utf-8
 "文件默认格式unix
 set ff=unix
 "缩进为4个空格宽度
@@ -47,30 +49,30 @@ set showtabline=2
 set report=0
 "关闭错误信息响铃
 "自动切换当前目录为当前文件所在的目录
-set autochdir           
+set autochdir
 set noerrorbells
 "显示模式
 set showmode
 "显示括号配对情况
-set magic      
-"允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存         
-set hidden             
+set magic
+"允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+set hidden
 "注释
 set comments=sl:/*,mb:*,ex:*/
 "设定命令行的行数为1
-set cmdheight=1             
+set cmdheight=1
 "自动补全提示
 set wildmode=list:longest,full
 "使用中文帮助
 set helplang=cn
 "不要备份文件
 set nobackup
-"设置编码  
-set enc=utf-8  
-"设置文件编码  
-set fenc=utf-8  
-"设置文件编码检测类型及支持格式  
-set fencs=utf-8,gb18030,gbk,gb2312  
+"设置编码
+set enc=utf-8
+"设置文件编码
+set fenc=utf-8
+"设置文件编码检测类型及支持格式
+set fencs=utf-8,gb18030,gbk,gb2312
 "显示Tab符
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
 set list
@@ -125,19 +127,25 @@ imap <C-s> <Esc>:w<cr>
 vnoremap <C-C> "+y
 
 "映射ctrl+v
-map <C-V>   	"+gP
-cmap <C-V>  	<C-R>+
+"Linux
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+
+"Windows
+"map <C-V> "+gP
+"cmap <C-V> <C-R>+
+
 "复制当前行
 imap <A-c> <Esc>Ya
 
-"粘贴到当前行   
+"粘贴到当前行
 imap <A-v> <Esc>pi
 
 
 
 "visual模式修改缩进时不退出该模式
 vnoremap < <gv
-vnoremap > >gv 
+vnoremap > >gv
 
 "映射F12键为行号的开关
 map <F12> :set number!<CR>
@@ -200,18 +208,6 @@ let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
-
-" NERD_commenter.vim
-<leader>ca 在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
-<leader>cc 注释当前行
-<leader>cs 以”性感”的方式注释
-<leader>cA 在当前行尾添加注释符，并进入Insert模式
-<leader>cu 取消注释
-<leader>cm 添加块注释
-
-" jsbeautify.vim 优化js代码，并不是简单的缩进，而是优化整个文件
-nmap <silent> <leader>js :call g:Jsbeautify()<cr>
-
 
 " vimwiki
 let g:vimwiki_use_mouse = 1
